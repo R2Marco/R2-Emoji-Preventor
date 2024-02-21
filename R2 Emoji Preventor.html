@@ -10,6 +10,7 @@
             const contenido = textarea.value;
             if (/[\u{1F600}-\u{1F6FF}]/u.test(contenido)) {
                 alert('No se permiten emojis en este campo.');
+                // metodo no asegura continuidad de borrado de emoji, solo alerta.
                 event.preventDefault();
             }
         }
