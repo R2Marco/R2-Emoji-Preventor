@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Preventor</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: 'Snow', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        textarea {
+            width: 50%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+            background-color: #555;
+            color: #fff;
+            outline: none;
+        }
+
+        textarea:focus {
+            border: 2px solid #00ffcc;
+        }
+
+        textarea::placeholder {
+            color: #999;
+        }
+
+        button {
+            background-color: #00ffcc;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            width: 25%;
+        }
+
+        button:hover {
+            background-color: #00cc99;
+        }
+
+        .error-message {
+            color: #ff3366;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function prevenirEmoji(event) {
+            const textarea = event.target;
+            const contenido = textarea.value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (/[\u{1F600}-\u{1F6FF}]/u.test(contenido)) {
+                errorMessage.innerText = 'NO SE PERMITEN EMOJIS EN ESTE CAMPO.';
+                event.preventDefault();
+            } else {
+                errorMessage.innerText = '';
+            }
+        }
+    </script>
+</head>
+<body>
+
+<img src="Picture1.png" alt="R2Marco">
+
+    <h1>🙄 EMOJI PREVENTOR 🙄</h1>
+    <textarea oninput="prevenirEmoji(event)" placeholder="Escribe aquí..." rows="8"></textarea>
+<div id="error-message" class="error-message"></div> <BR>
+    <button>ENVIAR</button>
+    
+</body>
+</html>
